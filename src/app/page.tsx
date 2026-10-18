@@ -24,6 +24,7 @@ export default function Home() {
             <Link href="#features" className="hover:text-emerald-700">امکانات</Link>
             <Link href="#workflow" className="hover:text-emerald-700">نحوه کار</Link>
             <Link href="/clinic" className="hover:text-emerald-700">ویژه کلینیک‌ها</Link>
+            <Link href="/login" className="hover:text-emerald-700">ورود به حساب</Link>
           </nav>
           <Link href="/dashboard" className="inline-flex items-center gap-2 rounded-xl bg-emerald-700 px-4 py-2.5 text-sm font-bold text-white hover:bg-emerald-800">
             ورود به پیش‌نمایش <ArrowLeft className="size-4" />
@@ -52,7 +53,8 @@ export default function Home() {
                 پنل کلینیک <ArrowUpLeft className="size-4" />
               </Link>
             </div>
-            <p className="mt-5 text-xs text-slate-500">نمای فعلی آزمایشی است. داده‌های نمایش‌داده‌شده، اطلاعات واقعی بیماران نیستند.</p>
+            <div className="mt-5 flex flex-wrap gap-4 text-sm"><Link href="/login" className="font-bold text-emerald-700 underline underline-offset-4">ورود با شماره همراه</Link><Link href="/my-pets" className="font-bold text-slate-600 underline underline-offset-4">پت‌های من (حساب واقعی)</Link></div>
+            <p className="mt-4 text-xs text-slate-500">نمای فعلی آزمایشی است. داده‌های نمایش‌داده‌شده، اطلاعات واقعی بیماران نیستند.</p>
           </div>
 
           <div className="relative mx-auto w-full max-w-xl">
