@@ -12,7 +12,8 @@ test("pet preview accepts custom species without persisting medical data", async
   await page.goto("/pets/new");
   await page.getByLabel("نام حیوان *").fill("کیکی");
   await page.getByLabel("گونه *").selectOption("other");
-  await page.getByLabel("نام گونه *").fill("ایگوانا");
+  await expect(page.locator("#custom-species")).toBeVisible();
+  await page.locator("#custom-species").fill("ایگوانا");
   await page.getByRole("button", { name: "ساخت پیش‌نمایش پروفایل" }).click();
   await expect(page.getByText("پیش‌نمایش ساخته شد؛ اطلاعات ذخیره نشده‌اند.")).toBeVisible();
   await expect(page.getByText("گونه: ایگوانا")).toBeVisible();
