@@ -1,6 +1,6 @@
 import {
   BadRequestException, ForbiddenException, Injectable, ServiceUnavailableException,
-  TooManyRequestsException, UnauthorizedException,
+  HttpException, HttpStatus, UnauthorizedException,
 } from "@nestjs/common";
 import { createHash, createHmac, randomBytes, randomInt, timingSafeEqual } from "node:crypto";
 import type { Request } from "express";
@@ -66,13 +66,13 @@ export class AuthService {
         "SELECT count(*)::text AS attempts FROM otp_challenges WHERE phone_e164 = $1 AND created_at > now() - interval '1 hour'",
         [phone],
       );
-      if (Number(count.rows[0]?.attempts ?? 0) >= 5) throw new TooManyRequestsException("Hourly request limit reached");
+      if (Number(count.rows[0]?.attempts ?? 0) >= 5) throw new HttpException("Hourly request limit reached", HttpStatus.TOO_MANY_REQUESTS);
       const latest = await client.query<{ seconds: string }>(
         "SELECT extract(epoch from (now() - created_at))::text AS seconds FROM otp_challenges WHERE phone_e164 = $1 ORDER BY created_at DESC LIMIT 1",
         [phone],
       );
       if (latest.rows.length && Number(latest.rows[0].seconds) < 60) {
-        throw new TooManyRequestsException("Wait before requesting another code");
+        throw new HttpException("Wait before requesting another code", HttpStatus.TOO_MANY_REQUESTS);
       }
       const result = await client.query<{ id: string }>(
         "INSERT INTO otp_challenges(phone_e164, code_hmac, expires_at) VALUES($1,$2,now() + interval '5 minutes') RETURNING id",
