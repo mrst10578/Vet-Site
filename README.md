@@ -33,6 +33,10 @@ npm run dev
 | `/dashboard` | داشبورد نمایشی صاحب پت |
 | `/clinic` | میز کار نمایشی کلینیک |
 | `/pets/new` | فرم پیش‌نمایش ثبت پت با گونه دلخواه |
+| `/login` | ورود امن با OTP، پس از پیکربندی پیامک و API |
+| `/my-pets` | مدیریت واقعی پت با دسترسی مالک |
+| `/sharing` | مجوز اشتراک و لغو دسترسی کلینیک |
+| `/clinic/live` | فهرست بیماران مجاز کلینیک تأییدشده |
 | `/api/health` | وضعیت سرویس نمایشی |
 | `/api/v1/species` | فهرست گونه‌ها و امکان تعریف سایر گونه‌ها |
 
@@ -51,6 +55,9 @@ npm run test:e2e
 - `docs/phase1-plan.md`: برنامه اجرایی و تعریف تحویل واقعی
 - `docs/architecture.md`: معماری هدف، امنیت و مرزهای دیتای پزشکی
 - `db/migrations/001_initial.sql`: اسکیمای اولیه PostgreSQL برای فاز اول
+- `db/migrations/002_identity.sql`: نشست‌های امن و چالش‌های یک‌بارمصرف
+- `apps/api/README.md`: نحوه راه‌اندازی API مستقل NestJS
+- `docs/local-development.md`: راه‌اندازی با دیتابیس Docker و اتصال وب
 
 ## مسیر تکمیل
 
