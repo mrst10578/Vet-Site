@@ -4,8 +4,8 @@ export const dynamic = "force-static";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "پتورا | مدیریت سلامت حیوانات خانگی",
-    short_name: "پتورا",
+    name: "پترونوس | مدیریت سلامت حیوانات خانگی",
+    short_name: "پترونوس",
     description: "داشبورد مراقبت و پرونده سلامت حیوانات خانگی",
     start_url: "/",
     display: "standalone",
