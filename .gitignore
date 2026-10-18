@@ -1,5 +1,6 @@
 # dependencies
 /node_modules
+/apps/api/node_modules
 
 # next
 /.next/
@@ -7,6 +8,7 @@
 
 # production
 /build
+/apps/api/dist/
 
 # testing
 /coverage/
@@ -16,6 +18,7 @@
 # local env files
 .env*
 !.env.example
+!apps/api/.env.example
 
 # logs
 npm-debug.log*
