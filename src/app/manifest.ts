@@ -2,8 +2,8 @@ import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "پت‌یار | مدیریت سلامت حیوانات خانگی",
-    short_name: "پت‌یار",
+    name: "پتورا | مدیریت سلامت حیوانات خانگی",
+    short_name: "پتورا",
     description: "داشبورد مراقبت و پرونده سلامت حیوانات خانگی",
     start_url: "/",
     display: "standalone",
