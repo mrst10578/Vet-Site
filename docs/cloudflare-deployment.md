@@ -1,14 +1,14 @@
-# Petora / Cloudflare deployment
+# Petronus / Cloudflare deployment
 
 ## Live first-stage preview
 
-- Public URL: https://petora.pages.dev
+- Public URL: https://petronus.pages.dev
 - Provider: Cloudflare Pages **Direct Upload**
 - Account: Zh St #2 (`5c08f03802249fd7a8539c855e9eac1b`)
-- Pages project name: `petora`
+- Pages project name: `petronus`
 - Production branch setting: `main`
-- Deployment content: standalone `cloudflare/petora-preview.mjs` as Pages `_worker.js`
-- Fallback Worker: `petora.zh-st-2.workers.dev`
+- Deployment content: standalone `cloudflare/petronus-preview.mjs` as Pages `_worker.js`
+- Fallback Worker: `petronus.zh-st-2.workers.dev`
 - Real clinical data, OTP, database and API: **NOT connected** to this public preview
 
 ## Important distinction
@@ -19,11 +19,11 @@ The current Pages URL serves a deliberately isolated interactive marketing/demo 
 
 ## Re-deploy this exact preview
 
-1. Review source file `cloudflare/petora-preview.mjs` and merge changes through PR.
+1. Review source file `cloudflare/petronus-preview.mjs` and merge changes through PR.
 2. Upload that file as `_worker.js` to the Pages project's deployments endpoint, using a direct upload with `manifest={}` and production branch `main`.
 3. Verify Cloudflare deployment status is `deploy: success` and check pages directly in a browser.
 
-Alternatively the file can be uploaded as a Cloudflare Worker module named `petora` and served under `petora.zh-st-2.workers.dev`.
+Alternatively the file can be uploaded as a Cloudflare Worker module named `petronus` and served under `petronus.zh-st-2.workers.dev`.
 
 ## Next.js static export (separate from deployed preview)
 
@@ -35,7 +35,7 @@ To run the complete product, provision HTTPS/same-origin routing and a separatel
 
 ## Branding
 
-Public brand: **پتورا / Petora**.
+Public brand: **پترونوس / Petronus**.
 Palette: eucalyptus green / mint / warm off-white.
 Primary Persian font family declared: Mikhak, with local fallback until a licensed web font asset is available.
 
