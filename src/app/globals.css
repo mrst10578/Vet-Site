@@ -1,19 +1,19 @@
 @import "tailwindcss";
 
 :root {
-  --background: oklch(0.985 0.002 247);
-  --foreground: oklch(0.19 0.02 255);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.19 0.02 255);
-  --primary: oklch(0.25 0.04 255);
-  --primary-foreground: oklch(0.985 0.002 247);
-  --secondary: oklch(0.95 0.008 255);
-  --secondary-foreground: oklch(0.25 0.04 255);
-  --muted: oklch(0.95 0.008 255);
-  --muted-foreground: oklch(0.48 0.02 255);
-  --border: oklch(0.9 0.01 255);
-  --ring: oklch(0.58 0.12 255);
-  --radius: 0.75rem;
+  --background: #f7faf9;
+  --foreground: #163331;
+  --card: #ffffff;
+  --card-foreground: #163331;
+  --primary: #137f72;
+  --primary-foreground: #ffffff;
+  --secondary: #e9f5f1;
+  --secondary-foreground: #17695f;
+  --muted: #edf3f1;
+  --muted-foreground: #627a75;
+  --border: #dceae5;
+  --ring: #22a18f;
+  --radius: 0.9rem;
 }
 
 @theme inline {
@@ -32,25 +32,21 @@
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
+  --radius-xl: calc(var(--radius) + 6px);
 }
 
-* {
-  border-color: var(--border);
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
+* { box-sizing: border-box; border-color: var(--border); }
+html { scroll-behavior: smooth; }
 body {
   min-height: 100vh;
   background: var(--background);
   color: var(--foreground);
-  font-family:
-    Arial, Helvetica, ui-sans-serif, system-ui, -apple-system, sans-serif;
+  font-family: "Mikhak", "Vazirmatn", Tahoma, sans-serif;
 }
-
-::selection {
-  background: color-mix(in oklab, var(--primary) 18%, transparent);
+button, input, select, textarea { font: inherit; }
+:focus-visible { outline: 2px solid var(--ring); outline-offset: 3px; }
+::selection { background: #b9eade; }
+.bg-soft-grid {
+  background-image: radial-gradient(#badbd1 0.6px, transparent 0.6px);
+  background-size: 18px 18px;
 }

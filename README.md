@@ -1,96 +1,68 @@
-# starter-web
+# Vet-Site / پت‌یار
 
-A clean, production-oriented Next.js starter for client websites and general web apps.
+وب‌اپلیکیشن فارسی برای مدیریت سلامت حیوانات خانگی و هماهنگی صاحب پت با دامپزشک و کلینیک.
 
-## What this starter is for
+## وضعیت توسعه
 
-Use this repository when the project is a normal website or web application and does not need a more specialized starter such as SaaS, AI, CMS, or Learning.
+این مخزن در مرحله **ساخت فاز اول** است. رابط اولیه فارسی، داشبوردهای نمونه مالک و کلینیک، فرم پیش‌نمایش ثبت پت، منطق طبقه‌بندی یادآورها و اسکیمای آغازین دیتابیس پیاده‌سازی شده‌اند.
 
-## Core stack
+**مهم:** اطلاعات موجود در داشبوردها ساختگی‌اند. احراز هویت پیامکی، اتصال به دیتابیس واقعی، ثبت پرونده پزشکی، نسخه‌نویسی، اعلان‌های واقعی و AI هنوز فعال نشده‌اند. از این نسخه برای اطلاعات واقعی بیمار استفاده نکنید.
 
-- Next.js 16.3.5
-- React 19.2.8
-- TypeScript 5.x
-- Tailwind CSS 4.3.3
-- shadcn-compatible component structure
-- Vitest unit tests
-- Playwright E2E smoke tests
-- GitHub Actions CI
+## تصمیم‌های محصول
 
-React is intentionally pinned to the version used by the current official create-next-app template instead of automatically chasing the newest React release.
+- مخاطبان: صاحبان پت و کلینیک‌ها
+- گونه‌ها: همه گونه‌ها؛ فهرست آزاد، بدون محدودسازی به سگ و گربه
+- هوش مصنوعی: خارج از دامنه فاز اول
+- رابط: راست‌به‌چپ، فارسی، موبایل‌محور و قابل توسعه به PWA
+- فونت هدف: Mikhak (نیازمند بارگذاری فایل مجاز در زمان استقرار)
 
-## Included
-
-- App Router
-- strict TypeScript
-- responsive starter page
-- SEO metadata baseline
-- robots + sitemap
-- loading, error, and not-found states
-- accessible UI button primitive
-- Tailwind class utility
-- ESLint
-- unit test baseline
-- E2E smoke test
-- CI verification
-- AI coding rules in `AGENTS.md`
-
-## Not included
-
-These belong to feature packs and must be added only when the project needs them:
-
-- authentication
-- database
-- storage
-- payments
-- CMS
-- AI / RAG
-- analytics
-- monitoring
-- search
-- email
-
-## Start a project
-
-1. Create a new repository from this template.
-2. Copy `.env.example` to `.env.local`.
-3. Install dependencies:
+## اجرا
 
 ```bash
-npm install
-```
-
-4. Run:
-
-```bash
+npm ci
 npm run dev
 ```
 
-## Verification
+باز کردن `http://localhost:3000`
+
+## مسیرهای فعلی
+
+| مسیر | توضیح |
+|---|---|
+| `/` | صفحه اصلی فارسی |
+| `/dashboard` | داشبورد نمایشی صاحب پت |
+| `/clinic` | میز کار نمایشی کلینیک |
+| `/pets/new` | فرم پیش‌نمایش ثبت پت با گونه دلخواه |
+| `/login` | ورود امن با OTP، پس از پیکربندی پیامک و API |
+| `/my-pets` | مدیریت واقعی پت با دسترسی مالک |
+| `/sharing` | مجوز اشتراک و لغو دسترسی کلینیک |
+| `/clinic/live` | فهرست بیماران مجاز کلینیک تأییدشده |
+| `/api/health` | وضعیت سرویس نمایشی |
+| `/api/v1/species` | فهرست گونه‌ها و امکان تعریف سایر گونه‌ها |
+
+## بررسی کیفیت
 
 ```bash
-npm run verify
+npm run lint
+npm run typecheck
+npm run test
+npm run build
 npm run test:e2e
 ```
 
-The GitHub Actions workflow runs lint, typecheck, unit tests, production build, and Chromium E2E smoke tests.
+## اسناد
 
-## Feature packs
+- `docs/phase1-plan.md`: برنامه اجرایی و تعریف تحویل واقعی
+- `docs/architecture.md`: معماری هدف، امنیت و مرزهای دیتای پزشکی
+- `db/migrations/001_initial.sql`: اسکیمای اولیه PostgreSQL برای فاز اول
+- `db/migrations/002_identity.sql`: نشست‌های امن و چالش‌های یک‌بارمصرف
+- `apps/api/README.md`: نحوه راه‌اندازی API مستقل NestJS
+- `docs/local-development.md`: راه‌اندازی با دیتابیس Docker و اتصال وب
 
-The source of truth for optional capabilities lives in the separate `pro-web-toolkit` repository. Add only the packs required by the client brief.
+## مسیر تکمیل
 
-<!-- TOOLKIT-LINK:BEGIN -->
+اولویت بعدی پیاده‌سازی ورود امن با OTP، کنترل نقش و مجوزهای سطح پرونده و بک‌اند NestJS متصل به PostgreSQL است. پیش از این مرحله، هیچ عملکرد بالینی واقعی فعال نخواهد شد.
 
-## Professional Web Toolkit
+## منشأ قالب
 
-This repository is the **starter-web** starter in the private Professional Web Toolkit.
-
-- Toolkit source of truth: `mrst10578/pro-web-toolkit`
-- Starter registry key: `starter-web`
-- Starter version: `0.1.0`
-- Maturity: `experimental`
-- Optional capabilities come from Feature Packs in the toolkit; do not hard-code unused providers into this starter.
-- Repository-specific wiring metadata: `starter.yml`
-- Composition rules: `TOOLKIT.md`
-
-<!-- TOOLKIT-LINK:END -->
+پروژه با یک قالب عمومی Next.js از Professional Web Toolkit آغاز شده و برای محصول Vet-Site اختصاصی‌سازی می‌شود.
