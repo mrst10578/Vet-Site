@@ -1,11 +1,13 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
-import { ArrowLeft, Building2, HeartPulse, House, PawPrint, PlusCircle } from "lucide-react";
+import { ArrowLeft, Building2, HeartPulse, House, LockKeyhole, PawPrint, PlusCircle, ShieldCheck } from "lucide-react";
 
 const links = [
   { href: "/dashboard", text: "داشبورد مالک", icon: House },
   { href: "/pets/new", text: "افزودن پت", icon: PlusCircle },
   { href: "/clinic", text: "پنل کلینیک", icon: Building2 },
+  { href: "/my-pets", text: "پرونده‌های واقعی", icon: ShieldCheck },
+  { href: "/sharing", text: "اشتراک امن پرونده", icon: LockKeyhole },
 ];
 
 export function AppShell({
