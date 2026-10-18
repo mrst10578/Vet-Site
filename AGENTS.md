@@ -1,37 +1,24 @@
-# AI Engineering Rules
+# Vet-Site Engineering Instructions
 
-This repository is the general-purpose web starter for the Professional Web Toolkit.
+This repository is a veterinary pet-care product, not a generic template. The product serves pet owners and clinics, supports ALL species and defers AI.
 
-## Goal
+## Baseline
+- Next.js App Router / React 19 / TypeScript strict / Tailwind
+- PostgreSQL source of truth (initial schema in db/migrations)
+- Target API architecture: modular NestJS + worker queue
+- Persian RTL, mobile-first; Mikhak primary font once licensed assets are supplied
 
-Keep this starter small, reliable, and reusable for real client work.
+## Clinical and privacy constraints
+1. UI demo data is explicitly synthetic; NEVER persist real medical details to localStorage or return real records from open endpoints.
+2. Do not enable medical writes until authenticated principals, verified clinic memberships and scoped pet-level grants are enforced on every request.
+3. Owner, guardian, clinician and reception permissions are distinct. A guessed pet ID must never confer access.
+4. Species are an open catalogue. No automatic species-specific vaccines, medications or dosing advice without vetted clinical protocols.
+5. No AI in Phase 1; clinical records remain SQL-backed, audited and human-authored.
+6. Build time-aware reminders as persisted worker jobs with retries and idempotency, not browser timers.
+7. Do not store raw sensitive file content in logs; use private object storage with authorized expiring links.
+8. Store secrets server-side only; never weaken TypeScript, validation or tests to bypass failures.
+9. Make real vs prototype state explicit in UI, docs and acceptance criteria.
 
-## Core architecture
-
-- Next.js App Router
-- TypeScript
-- Tailwind CSS
-- shadcn-compatible components in `src/components/ui`
-- shared helpers in `src/lib`
-
-## Rules
-
-1. Do not add auth, database, storage, payments, CMS, AI, analytics, monitoring, search, or email to core.
-2. Optional business capabilities come from feature packs.
-3. Do not add a dependency without a current requirement.
-4. Prefer Server Components. Add `"use client"` only when browser state/effects are required.
-5. Keep accessibility, responsive behavior, loading, empty, error, and not-found states explicit.
-6. Keep secrets server-only.
-7. Do not weaken TypeScript or lint rules to make a change pass.
-8. Before shipping, run:
-   - `npm run lint`
-   - `npm run typecheck`
-   - `npm run test`
-   - `npm run build`
-   - `npm run test:e2e`
-9. Preserve the `@/* -> ./src/*` import alias.
-10. New reusable UI should follow the existing `cn` + variant pattern and remain compatible with shadcn conventions.
-
-## Scope test
-
-If a proposed change describes a reusable product capability rather than the general web foundation, it probably belongs in a feature pack instead of this starter.
+## Validation
+Run: npm run lint, npm run typecheck, npm run test, npm run build, npm run test:e2e.
+Preserve the existing import alias @/* and improve accessibility / empty states / responsiveness in every increment.
