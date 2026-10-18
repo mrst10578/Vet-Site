@@ -1,6 +1,10 @@
 export const siteConfig = {
-  name: "پت‌یار | مدیریت سلامت حیوانات خانگی",
+  name: "پتورا | Petora",
   description:
-    "پرونده سلامت، برنامه مراقبت و ارتباط امن صاحب حیوان با دامپزشک و کلینیک، در یک فضای ساده و یکپارچه.",
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
+    "پتورا؛ فضای دوست‌داشتنی مدیریت سلامت حیوانات خانگی، مراقبت روزانه و هماهنگی ایمن با دامپزشک.",
+  url:
+    process.env.NEXT_PUBLIC_SITE_URL ??
+    (process.env.CF_PAGES_STATIC === "1"
+      ? "https://petora.pages.dev"
+      : "http://localhost:3000"),
 } as const;

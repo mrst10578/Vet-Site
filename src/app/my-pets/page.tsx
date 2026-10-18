@@ -81,7 +81,7 @@ export default function MyPetsPage() {
 
   return (
     <main id="main-content" className="min-h-dvh bg-[#f4faf7]">
-      <header className="border-b bg-white"><div className="mx-auto flex max-w-5xl items-center justify-between px-5 py-4"><Link href="/" className="flex items-center gap-2 font-black text-emerald-800"><PawPrint /> پت‌یار</Link><Link href="/dashboard" className="text-sm font-semibold text-emerald-700">داشبورد نمایشی</Link></div></header>
+      <header className="border-b bg-white"><div className="mx-auto flex max-w-5xl items-center justify-between px-5 py-4"><Link href="/" className="flex items-center gap-2 font-black text-emerald-800"><PawPrint /> پتورا</Link><Link href="/dashboard" className="text-sm font-semibold text-emerald-700">داشبورد نمایشی</Link></div></header>
       <div className="mx-auto max-w-5xl px-5 py-10">
         <p className="text-sm font-bold text-emerald-700">حساب واقعی · دسترسی مالک</p><h1 className="mt-2 text-3xl font-black">پت‌های من</h1>
         <p className="mt-3 text-sm leading-7 text-slate-600">این صفحه فقط داده‌های ثبت‌شده در سرور و متعلق به حساب واردشده را می‌خواند. اطلاعات نمایشی به اینجا منتقل نمی‌شوند.</p>

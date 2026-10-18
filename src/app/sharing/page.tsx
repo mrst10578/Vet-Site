@@ -92,7 +92,7 @@ export default function SharingPage() {
   return (
     <main id="main-content" className="min-h-dvh bg-[#f4faf7] px-5 py-10">
       <div className="mx-auto max-w-4xl">
-        <Link href="/" className="inline-flex items-center gap-2 text-lg font-black text-emerald-800"><PawPrint /> پت‌یار</Link>
+        <Link href="/" className="inline-flex items-center gap-2 text-lg font-black text-emerald-800"><PawPrint /> پتورا</Link>
         <p className="mt-8 text-sm font-bold text-emerald-700">حریم خصوصی و مالکیت</p>
         <h1 className="mt-2 text-3xl font-black">اشتراک امن پرونده با کلینیک</h1>
         <p className="mt-3 text-sm leading-8 text-slate-600">دسترسی فقط به کلینیک تأییدشده داده می‌شود و تا مدت مشخص معتبر است. لغو دسترسی بلافاصله روی درخواست‌های بعدی اعمال می‌شود.</p>

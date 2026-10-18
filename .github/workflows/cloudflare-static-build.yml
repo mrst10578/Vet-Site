@@ -1,0 +1,40 @@
+name: Cloudflare static export verification
+
+on:
+  push:
+    branches: ["feat/petora-cloudflare-pages"]
+  pull_request:
+    paths:
+      - "next.config.ts"
+      - "package.json"
+      - "src/**"
+      - ".github/workflows/cloudflare-static-build.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  static-preview-build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      NEXT_TELEMETRY_DISABLED: "1"
+      NEXT_PUBLIC_SITE_URL: "https://petora.pages.dev"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Install dependencies
+        run: npm ci --no-audit --no-fund
+      - name: Build static Next.js site for Cloudflare Pages
+        run: npm run build:pages
+      - name: Check exported public routes
+        run: |
+          test -s out/index.html
+          test -s out/dashboard/index.html
+          test -s out/clinic/index.html
+          test -s out/pets/new/index.html
+          echo "Cloudflare-compatible static export generated."
