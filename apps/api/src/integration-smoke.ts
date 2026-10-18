@@ -6,7 +6,7 @@ import { createServer } from "node:http";
 import { join, resolve } from "node:path";
 import { Pool } from "pg";
 import { NestFactory } from "@nestjs/core";
-import { AppModule } from "../src/app.module";
+import { AppModule } from "./app.module";
 
 const origin = "http://localhost:3000";
 const ownerPhone = "+15550001001";
