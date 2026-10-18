@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title">
+  <title id="title">پت‌یار</title>
+  <rect width="128" height="128" rx="30" fill="#137f72"/>
+  <g fill="#fff">
+    <ellipse cx="32" cy="42" rx="10" ry="14" transform="rotate(-21 32 42)"/>
+    <ellipse cx="55" cy="28" rx="10" ry="14" transform="rotate(-5 55 28)"/>
+    <ellipse cx="79" cy="30" rx="10" ry="14" transform="rotate(14 79 30)"/>
+    <ellipse cx="100" cy="46" rx="10" ry="14" transform="rotate(23 100 46)"/>
+    <path d="M64 55c-15 0-18 13-30 23-8 8-6 22 3 27 12 7 17-2 27-2s15 9 27 2c9-5 11-19 3-27C82 68 79 55 64 55Z"/>
+  </g>
+</svg>
