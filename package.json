@@ -14,7 +14,8 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "test:e2e": "playwright test",
-    "verify": "npm run lint && npm run typecheck && npm run test && npm run build"
+    "verify": "npm run lint && npm run typecheck && npm run test && npm run build",
+    "build:pages": "CF_PAGES_STATIC=1 next build"
   },
   "dependencies": {
     "class-variance-authority": "0.7.1",
