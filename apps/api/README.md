@@ -18,6 +18,10 @@ Routes:
 - `GET /v1/pets` owner-scoped list
 - `POST /v1/pets` owner-scoped create
 - `GET /v1/pets/:id` owner-scoped details
+- `GET /v1/clinic/verified` verified clinics (public names only)
+- `GET/POST /v1/pets/:petId/grants` owner-granted clinic sharing
+- `POST /v1/pets/:petId/grants/:grantId/revoke` immediate revocation
+- `GET /v1/clinic/patients` verified staff with active granted pet scope
 
 **Security boundary:** no open clinical endpoints; no clinic-access endpoints until vet verification and grants are complete. Never put the API behind an unauthenticated public write proxy. Require `WEB_ORIGIN` for all mutating requests, enforce request limits at the reverse proxy, and use HTTPS with secure cookies in production. The generic SMS adapter expects a sender gateway that accepts `POST {to,message}` and Authorization Bearer token. Do not assume any specific provider implements this wire protocol unchanged.
 
