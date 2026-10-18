@@ -16,6 +16,14 @@ type VisiblePatient = {
 export class ClinicController {
   constructor(private readonly auth: AuthService, private readonly db: DatabaseService) {}
 
+  @Get("verified")
+  async verified() {
+    const clinics = await this.db.query<{ id: string; legal_name: string }>(
+      "SELECT id,legal_name FROM clinics WHERE verified_at IS NOT NULL ORDER BY legal_name LIMIT 100",
+    );
+    return { clinics: clinics.rows };
+  }
+
   @Get("patients")
   async patients(@Req() request: Request) {
     const user = await this.auth.currentAccount(request);
