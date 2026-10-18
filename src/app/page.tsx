@@ -16,9 +16,9 @@ export default function Home() {
     <main id="main-content">
       <header className="border-b border-emerald-100/80 bg-white/90">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-4 sm:px-8">
-          <Link href="/" className="flex items-center gap-2 text-xl font-extrabold text-emerald-900" aria-label="پتورا، صفحه اصلی">
+          <Link href="/" className="flex items-center gap-2 text-xl font-extrabold text-emerald-900" aria-label="پترونوس، صفحه اصلی">
             <span className="flex size-10 items-center justify-center rounded-2xl bg-emerald-700 text-white"><PawPrint className="size-5" /></span>
-            پتورا
+            پترونوس
           </Link>
           <nav className="hidden items-center gap-7 text-sm font-medium text-slate-600 md:flex" aria-label="ناوبری اصلی">
             <Link href="#features" className="hover:text-emerald-700">امکانات</Link>
@@ -37,13 +37,13 @@ export default function Home() {
         <div className="mx-auto grid max-w-7xl items-center gap-14 px-5 py-16 sm:px-8 lg:grid-cols-2 lg:py-24">
           <div className="relative z-10">
             <span className="inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-white px-4 py-2 text-xs font-semibold text-emerald-800">
-              <span className="size-2 rounded-full bg-emerald-500" /> پتورا؛ همراه روزهای سلامت پت
+              <span className="size-2 rounded-full bg-emerald-500" /> پترونوس؛ همراه روزهای سلامت پت
             </span>
             <h1 className="mt-7 text-4xl font-black leading-[1.6] tracking-tight text-slate-900 sm:text-5xl lg:text-[3.4rem]">
               تمام دنیای سلامت پت، <span className="text-emerald-700">در یک جای امن.</span>
             </h1>
             <p className="mt-6 max-w-xl text-base leading-9 text-slate-600 sm:text-lg">
-              از اولین ویزیت تا مراقبت‌های هر روز. با پتورا، صاحب حیوان و تیم درمان، تاریخچه سلامت و برنامه مراقبت را هماهنگ دنبال می‌کنند.
+              از اولین ویزیت تا مراقبت‌های هر روز. با پترونوس، صاحب حیوان و تیم درمان، تاریخچه سلامت و برنامه مراقبت را هماهنگ دنبال می‌کنند.
             </p>
             <div className="mt-9 flex flex-wrap gap-3">
               <Link href="/dashboard" className="inline-flex items-center gap-2 rounded-xl bg-emerald-700 px-6 py-3.5 font-bold text-white shadow-lg shadow-emerald-800/15 hover:bg-emerald-800">
@@ -123,7 +123,7 @@ export default function Home() {
       </section>
 
       <footer className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-4 px-5 py-8 text-sm text-slate-500 sm:px-8">
-        <span className="flex items-center gap-2 font-bold text-emerald-800"><PawPrint className="size-5" /> پتورا</span>
+        <span className="flex items-center gap-2 font-bold text-emerald-800"><PawPrint className="size-5" /> پترونوس</span>
         <span>پیش‌نمایش فاز اول · نسخه آزمایشی، بدون خدمات درمانی آنلاین</span>
       </footer>
     </main>
