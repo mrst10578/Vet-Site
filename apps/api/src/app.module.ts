@@ -4,9 +4,11 @@ import { HealthController } from "./health.controller";
 import { AuthController } from "./auth.controller";
 import { AuthService } from "./auth.service";
 import { PetsController } from "./pets.controller";
+import { GrantsController } from "./grants.controller";
+import { ClinicController } from "./clinic.controller";
 
 @Module({
-  controllers: [HealthController, AuthController, PetsController],
+  controllers: [HealthController, AuthController, PetsController, GrantsController, ClinicController],
   providers: [DatabaseService, AuthService],
 })
 export class AppModule {}
