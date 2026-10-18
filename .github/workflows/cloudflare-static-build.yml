@@ -2,7 +2,7 @@ name: Cloudflare static export verification
 
 on:
   push:
-    branches: ["feat/petora-cloudflare-pages"]
+    branches: ["main", "feat/petronus-rebrand"]
   pull_request:
     paths:
       - "next.config.ts"
@@ -19,7 +19,7 @@ jobs:
     timeout-minutes: 20
     env:
       NEXT_TELEMETRY_DISABLED: "1"
-      NEXT_PUBLIC_SITE_URL: "https://petora.pages.dev"
+      NEXT_PUBLIC_SITE_URL: "https://petronus.zh-st-2.workers.dev"
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -29,12 +29,11 @@ jobs:
           node-version: "22"
       - name: Install dependencies
         run: npm ci --no-audit --no-fund
-      - name: Build static Next.js site for Cloudflare Pages
+      - name: Build static Next.js site
         run: npm run build:pages
-      - name: Check exported public routes
+      - name: Check public routes
         run: |
           test -s out/index.html
           test -s out/dashboard/index.html
           test -s out/clinic/index.html
           test -s out/pets/new/index.html
-          echo "Cloudflare-compatible static export generated."

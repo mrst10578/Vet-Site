@@ -1,44 +1,35 @@
-# Petora / Cloudflare deployment
+# Petronus / Cloudflare deployment
 
-## Live first-stage preview
+## Public launch (verified via Cloudflare deployment API)
 
-- Public URL: https://petora.pages.dev
-- Provider: Cloudflare Pages **Direct Upload**
-- Account: Zh St #2 (`5c08f03802249fd7a8539c855e9eac1b`)
-- Pages project name: `petora`
-- Production branch setting: `main`
-- Deployment content: standalone `cloudflare/petora-preview.mjs` as Pages `_worker.js`
-- Fallback Worker: `petora.zh-st-2.workers.dev`
-- Real clinical data, OTP, database and API: **NOT connected** to this public preview
+**Brand:** پترونوس / Petronus
+**Primary demo URL:** https://petronus.zh-st-2.workers.dev
+**Existing Pages URL:** https://petora.pages.dev (legacy hostname, now serving Petronus branding)
+**Account:** Cloudflare Zh2, ID `5c08f03802249fd7a8539c855e9eac1b`
+**Worker script:** `petronus`, workers.dev enabled
+**Pages project:** `petora`; latest Direct Upload succeeded after branding change
+**Patient records, SMS OTP and clinical API:** not connected to these public demos.
 
-## Important distinction
+Note: Renaming the Cloudflare Pages project does NOT rename its `pages.dev` subdomain. Creating a new `petronus.pages.dev` project was not possible through the authorized tool in this session. Do not advertise that Pages URL as live.
 
-Cloudflare GitHub App installation returned an API error when trying to enable automatic Git deployment. Consequently this Pages project was created using Direct Upload. **Pushing to GitHub does not automatically update the live site.**
+## Preview source
 
-The current Pages URL serves a deliberately isolated interactive marketing/demo site. It includes home, owner demo, clinic demo and pet profile preview, with zero patient data storage. It does not run the full Next.js server or the NestJS clinical API.
+- Legacy source template: `cloudflare/petora-preview.mjs`.
+- Canonical Petronus preview source is generated from the template with `node scripts/build-petronus-preview.mjs`.
+- Generated file: `.deploy/petronus-worker.mjs` (do not commit generated output).
+- Generator performs the approved string substitutions `Petora -> Petronus`, `petora -> petronus`, `پتورا -> پترونوس`.
+- Upload the generated JavaScript as Worker `petronus` or as Pages `_worker.js` Direct Upload with `manifest={}` and production branch `main`.
 
-## Re-deploy this exact preview
+The current deployed demo contains four public sample pages: `/`, `/dashboard`, `/clinic`, and `/pets/new`. It is separate from the complete Next.js/NestJS app and stores no real pet data.
 
-1. Review source file `cloudflare/petora-preview.mjs` and merge changes through PR.
-2. Upload that file as `_worker.js` to the Pages project's deployments endpoint, using a direct upload with `manifest={}` and production branch `main`.
-3. Verify Cloudflare deployment status is `deploy: success` and check pages directly in a browser.
+## Next.js export and tests
 
-Alternatively the file can be uploaded as a Cloudflare Worker module named `petora` and served under `petora.zh-st-2.workers.dev`.
+`npm run build:pages` uses `CF_PAGES_STATIC=1` and creates the `out/` directory. GitHub Actions verifies the export. A static export has no functioning SMS, login, access-controlled medical API or live database. Full clinical functionality will require a separate secured backend and API integration.
 
-## Next.js static export (separate from deployed preview)
+## Automatic deployments
 
-`npm run build:pages` sets `CF_PAGES_STATIC=1` and generates `out/`. This command is validated in an independent GitHub Actions workflow. It is preparation for replacing the standalone preview with the actual Next.js frontend. Static export does not support the dynamic NestJS backend, authenticating patients, medication changes, live prescriptions or SMS.
+Cloudflare Pages GitHub App linking previously returned error 8000011. The public demo is therefore manually deployed via API and does **not** automatically update when GitHub changes. Keep this distinction explicit.
 
-## Future complete app deployment
+## Privacy
 
-To run the complete product, provision HTTPS/same-origin routing and a separately deployed NestJS API, PostgreSQL, verified SMS OTP, restricted access grants and backups. Move to a Cloudflare Workers-compatible Next.js full-stack adapter or reverse-proxy secure origin for non-static routes. Medical workflows must remain disabled until security and veterinary validation are complete.
-
-## Branding
-
-Public brand: **پتورا / Petora**.
-Palette: eucalyptus green / mint / warm off-white.
-Primary Persian font family declared: Mikhak, with local fallback until a licensed web font asset is available.
-
-## Keeping secrets safe
-
-Do not commit API tokens, OTP peppers, database credentials or patient data into this repository or the Pages preview. Direct Upload authentication must be provided only by a credential managed in an external secret store when automated deployment becomes available.
+Never include API tokens, clinical records, patient uploads, session secrets or database credentials in this public preview. The CSS declares Mikhak as the preferred Persian font with system fallback.

@@ -19,14 +19,14 @@ export function AppShell({
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-4 sm:px-8">
           <Link href="/" className="flex items-center gap-2 text-xl font-black text-emerald-800">
             <span className="flex size-10 items-center justify-center rounded-2xl bg-emerald-700 text-white"><PawPrint className="size-5" /></span>
-            پتورا
+            پترونوس
           </Link>
           <Link href="/" className="inline-flex items-center gap-2 text-sm text-slate-600 hover:text-emerald-700"><ArrowLeft className="size-4" /> صفحه اصلی</Link>
         </div>
       </header>
       <div className="mx-auto grid max-w-7xl gap-7 px-5 py-7 sm:px-8 lg:grid-cols-[220px_minmax(0,1fr)]">
         <aside className="h-fit rounded-3xl border border-slate-100 bg-white p-4 shadow-sm">
-          <div className="flex items-center gap-2 rounded-2xl bg-emerald-50 px-3 py-4 text-sm font-bold text-emerald-900"><HeartPulse className="size-5" /> میز کار پتورا</div>
+          <div className="flex items-center gap-2 rounded-2xl bg-emerald-50 px-3 py-4 text-sm font-bold text-emerald-900"><HeartPulse className="size-5" /> میز کار پترونوس</div>
           <nav className="mt-4 flex flex-wrap gap-1 lg:flex-col" aria-label="صفحات سامانه">
             {links.map(({ href, text, icon: Icon }) => (
               <Link key={href} href={href} className="inline-flex items-center gap-3 rounded-xl px-3 py-3 text-sm font-semibold text-slate-600 hover:bg-emerald-50 hover:text-emerald-800"><Icon className="size-4" />{text}</Link>

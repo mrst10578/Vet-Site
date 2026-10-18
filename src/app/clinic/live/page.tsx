@@ -30,7 +30,7 @@ export default function ClinicLivePage() {
   return (
     <main id="main-content" className="min-h-dvh bg-[#f4faf7] px-5 py-10">
       <div className="mx-auto max-w-5xl">
-        <Link href="/" className="inline-flex items-center gap-2 text-lg font-black text-emerald-800"><PawPrint /> پتورا</Link>
+        <Link href="/" className="inline-flex items-center gap-2 text-lg font-black text-emerald-800"><PawPrint /> پترونوس</Link>
         <p className="mt-8 text-sm font-bold text-emerald-700">پنل کلینیک · اطلاعات واقعی و مجاز</p>
         <h1 className="mt-2 text-3xl font-black">بیماران تحت نظر کلینیک</h1>
         <p className="mt-3 text-sm leading-8 text-slate-600">فهرست تنها برای دامپزشک یا مدیر تأییدشده کلینیک و فقط با مجوز فعال مالک نمایش داده می‌شود. نسخه‌نویسی هنوز فعال نیست.</p>
