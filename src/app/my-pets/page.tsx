@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useState, type FormEvent } from "react";
 import { ArrowLeft, LogIn, PawPrint, PlusCircle, ShieldCheck } from "lucide-react";
 
 type Pet = {
@@ -35,9 +35,34 @@ export default function MyPetsPage() {
     finally { setLoading(false); }
   }
 
-  useEffect(() => { void refresh(); }, []);
+  useEffect(() => {
+    let active = true;
+    void fetch("/v1/pets", { cache: "no-store", credentials: "same-origin" })
+      .then(async (response) => {
+        if (!active) return;
+        if (response.status === 401) {
+          setStatus("unauthorized");
+          setLoading(false);
+          return;
+        }
+        if (!response.ok) throw new Error("Pet API unavailable");
+        const result = (await response.json()) as { pets: Pet[] };
+        if (active) {
+          setPets(result.pets);
+          setStatus("ready");
+          setLoading(false);
+        }
+      })
+      .catch(() => {
+        if (active) {
+          setStatus("unavailable");
+          setLoading(false);
+        }
+      });
+    return () => { active = false; };
+  }, []);
 
-  async function create(event: React.FormEvent<HTMLFormElement>) {
+  async function create(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setBusy(true); setError("");
     try {
