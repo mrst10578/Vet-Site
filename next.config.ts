@@ -8,6 +8,8 @@ if (internalApi && !/^https?:\/\/[^/]+$/i.test(internalApi)) {
 const nextConfig: NextConfig = {
   poweredByHeader: false,
   reactStrictMode: true,
+  // Playwright uses 127.0.0.1; permit that local dev host for Next HMR/hydration.
+  allowedDevOrigins: ["127.0.0.1"],
   async rewrites() {
     if (!internalApi) return [];
     return [{ source: "/v1/:path*", destination: `${internalApi}/v1/:path*` }];
