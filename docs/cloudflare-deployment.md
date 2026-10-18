@@ -15,7 +15,7 @@ Note: Renaming the Cloudflare Pages project does NOT rename its `pages.dev` subd
 ## Preview source
 
 - Legacy source template: `cloudflare/petora-preview.mjs`.
-- Canonical Petronus preview source is generated from the template with `npm run build:petronus-preview`.
+- Canonical Petronus preview source is generated from the template with `node scripts/build-petronus-preview.mjs`.
 - Generated file: `.deploy/petronus-worker.mjs` (do not commit generated output).
 - Generator performs the approved string substitutions `Petora -> Petronus`, `petora -> petronus`, `پتورا -> پترونوس`.
 - Upload the generated JavaScript as Worker `petronus` or as Pages `_worker.js` Direct Upload with `manifest={}` and production branch `main`.
