@@ -6,6 +6,8 @@ import { siteConfig } from "@/lib/site";
 import "./globals.css";
 
 export const metadata: Metadata = {
+  manifest: "/manifest.webmanifest",
+  icons: { icon: "/icon.svg" },
   metadataBase: new URL(siteConfig.url),
   title: {
     default: siteConfig.name,
