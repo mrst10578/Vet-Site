@@ -85,7 +85,7 @@ export class AuthService {
       const response = await fetch(endpoint, {
         method: "POST",
         headers: { "content-type": "application/json", authorization: `Bearer ${bearer}` },
-        body: JSON.stringify({ to: phone, message: `کد ورود پت‌یار: ${code} (اعتبار ۵ دقیقه)` }),
+        body: JSON.stringify({ to: phone, message: `کد ورود پتورا: ${code} (اعتبار ۵ دقیقه)` }),
         signal: AbortSignal.timeout(8_000),
       });
       if (!response.ok) throw new Error("SMS gateway rejected message");
@@ -121,7 +121,7 @@ export class AuthService {
       }
       await client.query("DELETE FROM otp_challenges WHERE phone_e164 = $1", [phone]);
       const account = await client.query<{ id: string }>(
-        `INSERT INTO accounts(display_name,phone_e164) VALUES('کاربر پت‌یار',$1)
+        `INSERT INTO accounts(display_name,phone_e164) VALUES('کاربر پتورا',$1)
          ON CONFLICT(phone_e164) DO UPDATE SET phone_e164=EXCLUDED.phone_e164 RETURNING id`,
         [phone],
       );
