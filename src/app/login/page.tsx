@@ -44,9 +44,9 @@ export default function LoginPage() {
   return (
     <main id="main-content" className="flex min-h-dvh items-center justify-center bg-[#f3faf6] px-5 py-12">
       <div className="w-full max-w-md rounded-[2rem] border border-emerald-100 bg-white p-7 shadow-xl shadow-emerald-900/5 sm:p-9">
-        <Link href="/" className="mb-7 inline-flex items-center gap-2 text-lg font-black text-emerald-800"><PawPrint className="size-6" /> پتورا</Link>
+        <Link href="/" className="mb-7 inline-flex items-center gap-2 text-lg font-black text-emerald-800"><PawPrint className="size-6" /> پترونوس</Link>
         <div className="mb-5 flex size-12 items-center justify-center rounded-2xl bg-emerald-50 text-emerald-700">{stage === "request" ? <LockKeyhole /> : <KeyRound />}</div>
-        <h1 className="text-2xl font-black">{stage === "request" ? "ورود به حساب پتورا" : "تأیید شماره همراه"}</h1>
+        <h1 className="text-2xl font-black">{stage === "request" ? "ورود به حساب پترونوس" : "تأیید شماره همراه"}</h1>
         <p className="mt-3 text-sm leading-7 text-slate-600">{stage === "request" ? "شماره همراه را با پیش‌شماره کشور وارد کن تا کد تأیید ارسال شود." : "کد شش‌رقمی پیامک‌شده را وارد کن. اعتبار کد پنج دقیقه است."}</p>
         <form onSubmit={submit} className="mt-7 space-y-5">
           <div><label htmlFor="phone" className="mb-2 block text-sm font-bold">شماره همراه بین‌المللی</label><input id="phone" dir="ltr" inputMode="tel" autoComplete="tel" value={phone} disabled={stage === "verify"} onChange={(e) => setPhone(e.target.value)} required pattern="\+[1-9][0-9]{7,14}" placeholder="+989123456789" className="w-full rounded-xl border bg-white px-4 py-3 text-left text-sm disabled:bg-slate-100" /></div>
