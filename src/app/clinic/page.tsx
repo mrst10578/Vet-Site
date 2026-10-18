@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { ClipboardList, FileClock, LockKeyhole, Stethoscope, Users } from "lucide-react";
 import { AppShell } from "@/components/app-shell";
 import { demoPatients } from "@/lib/demo-data";
@@ -25,6 +26,7 @@ export default function ClinicDashboard() {
           </table>
         </div>
       </section>
+      <Link href="/clinic/live" className="mt-6 inline-flex rounded-xl bg-emerald-700 px-5 py-3 text-sm font-bold text-white">ورود به پرونده‌های مجاز کلینیک</Link>
       <div className="mt-6 flex gap-3 rounded-3xl border border-amber-100 bg-amber-50 p-5 text-sm leading-7 text-amber-900"><LockKeyhole className="mt-1 size-6 shrink-0" /><p>ثبت نسخه، مشاهده پرونده واقعی، اعطای دسترسی پزشک و تغییرات بالینی فقط پس از پیاده‌سازی احراز هویت، اعتبارسنجی مجوز حرفه‌ای و کنترل دسترسی سمت سرور فعال می‌شوند.</p></div>
     </AppShell>
   );
