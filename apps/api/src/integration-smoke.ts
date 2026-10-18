@@ -83,7 +83,7 @@ async function run(): Promise<void> {
       });
       assert.equal(verified.status, 201, "OTP accepted");
       const cookie = verified.headers.get("set-cookie")?.split(";")[0];
-      assert.ok(cookie?.startsWith("vet_session="), "session cookie");
+      if (!cookie || !cookie.startsWith("vet_session=")) throw new Error("session cookie missing");
       const info = (await verified.json()) as { accountId: string };
       return { accountId: info.accountId, cookie };
     }
