@@ -1,12 +1,14 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useState, type FormEvent } from "react";
 import { ArrowLeft, KeyRound, LockKeyhole, PawPrint } from "lucide-react";
 
 type Stage = "request" | "verify";
 
 export default function LoginPage() {
+  const router = useRouter();
   const [phone, setPhone] = useState("");
   const [code, setCode] = useState("");
   const [stage, setStage] = useState<Stage>("request");
@@ -31,7 +33,7 @@ export default function LoginPage() {
         throw new Error(stage === "request" ? "ارسال کد انجام نشد؛ شماره و سرویس پیامک را بررسی کنید." : "کد اشتباه یا منقضی شده است.");
       }
       if (stage === "request") setStage("verify");
-      else window.location.assign("/my-pets");
+      else router.push("/my-pets");
     } catch (caught) {
       setError(caught instanceof Error ? caught.message : "ارتباط با سرویس برقرار نشد.");
     } finally {
