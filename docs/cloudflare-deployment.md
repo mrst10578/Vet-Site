@@ -1,35 +1,30 @@
-# Petronus / Cloudflare deployment
+# Petronus Cloudflare deployments
 
-## Public launch (verified via Cloudflare deployment API)
+## Current production website
 
-**Brand:** پترونوس / Petronus
-**Primary demo URL:** https://petronus.zh-st-2.workers.dev
-**Existing Pages URL:** https://petora.pages.dev (legacy hostname, now serving Petronus branding)
-**Account:** Cloudflare Zh2, ID `5c08f03802249fd7a8539c855e9eac1b`
-**Worker script:** `petronus`, workers.dev enabled
-**Pages project:** `petora`; latest Direct Upload succeeded after branding change
-**Patient records, SMS OTP and clinical API:** not connected to these public demos.
+- Public web URL: **https://petronus-dey.pages.dev**
+- Cloudflare account: Zh3 / Mr.st10578@gmail.com's Account
+- Account ID: `165b50f0f7f8844ee71a744b3a286504`
+- Pages project: `petronus`
+- GitHub source: `mrst10578/Vet-Site`, branch `main`
+- Build command: `npm run build:pages`; artifact directory: `out`
+- GitHub integration successfully created using Cloudflare's Pages Git source API.
+- First source-based deployment ID: `94543c4f-9eb0-46f3-a5e2-25e9acea22e0`; Cloudflare reported **clone, build and deploy succeeded**.
 
-Note: Renaming the Cloudflare Pages project does NOT rename its `pages.dev` subdomain. Creating a new `petronus.pages.dev` project was not possible through the authorized tool in this session. Do not advertise that Pages URL as live.
+## Deployment pipeline
 
-## Preview source
+Cloudflare Pages is configured with `production_deployments_enabled=true` and `preview_deployment_setting=all`. Initial build was triggered manually from Git branch via API (type `ad_hoc` with the exact main commit SHA). A subsequent real GitHub push is required to verify webhook-triggered automatic deployment.
 
-- Legacy source template: `cloudflare/petora-preview.mjs`.
-- Canonical Petronus preview source is generated from the template with `node scripts/build-petronus-preview.mjs`.
-- Generated file: `.deploy/petronus-worker.mjs` (do not commit generated output).
-- Generator performs the approved string substitutions `Petora -> Petronus`, `petora -> petronus`, `پتورا -> پترونوس`.
-- Upload the generated JavaScript as Worker `petronus` or as Pages `_worker.js` Direct Upload with `manifest={}` and production branch `main`.
+Code changes merged into `main` should be reflected on the Pages project if the GitHub webhook is working. Do not edit clinical configuration or send any medical data through the public static site.
 
-The current deployed demo contains four public sample pages: `/`, `/dashboard`, `/clinic`, and `/pets/new`. It is separate from the complete Next.js/NestJS app and stores no real pet data.
+## Historical site and rollback
 
-## Next.js export and tests
+Previous Cloudflare account: Zh2, Pages project `petora`, old hostname `https://petora.pages.dev` (rebranded content). Independent Worker preview `https://petronus.zh-st-2.workers.dev` remains available. **Do not delete** until the new Git-backed pipeline has been validated.
 
-`npm run build:pages` uses `CF_PAGES_STATIC=1` and creates the `out/` directory. GitHub Actions verifies the export. A static export has no functioning SMS, login, access-controlled medical API or live database. Full clinical functionality will require a separate secured backend and API integration.
+## Current feature boundary
 
-## Automatic deployments
+`CF_PAGES_STATIC=1` builds a static Next.js export. Marketing pages, owner demo, clinic demo and a non-persistent pet intake preview work. Clinical storage, OTP login, signed-in medical records, clinical prescription writing and alert delivery are not connected to this static deployment. Those features need a separately configured backend, PostgreSQL, HTTPS routing and veterinary validation.
 
-Cloudflare Pages GitHub App linking previously returned error 8000011. The public demo is therefore manually deployed via API and does **not** automatically update when GitHub changes. Keep this distinction explicit.
+## Security
 
-## Privacy
-
-Never include API tokens, clinical records, patient uploads, session secrets or database credentials in this public preview. The CSS declares Mikhak as the preferred Persian font with system fallback.
+Never expose SMS credentials, database URLs, private clinical records or OTP secrets in Git or Pages build output. The public deployment uses synthetic demo data only.

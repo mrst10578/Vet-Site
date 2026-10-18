@@ -2,7 +2,7 @@ name: Cloudflare static export verification
 
 on:
   push:
-    branches: ["main", "feat/petronus-rebrand"]
+    branches: ["main"]
   pull_request:
     paths:
       - "next.config.ts"
@@ -19,7 +19,7 @@ jobs:
     timeout-minutes: 20
     env:
       NEXT_TELEMETRY_DISABLED: "1"
-      NEXT_PUBLIC_SITE_URL: "https://petronus.zh-st-2.workers.dev"
+      NEXT_PUBLIC_SITE_URL: "https://petronus-dey.pages.dev"
     steps:
       - name: Checkout
         uses: actions/checkout@v4
